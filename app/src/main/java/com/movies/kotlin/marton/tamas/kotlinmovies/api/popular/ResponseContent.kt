@@ -6,10 +6,10 @@ import com.squareup.moshi.Json
 class ResponseContent {
 
     private var page: Int = 0
-    private var results = arrayListOf<ResultWrapper>()
+    var results = arrayListOf<ResultWrapper>()
     @Json(name = "total_pages")
     private var totalPages: Int = 0
     @Json(name = "total_results")
     private var totalResults: Int = 0
-    private lateinit var contentType: ContentType
+    lateinit var contentType: ContentType
 }

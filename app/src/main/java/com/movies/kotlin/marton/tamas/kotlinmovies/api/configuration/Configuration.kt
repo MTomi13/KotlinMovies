@@ -1,9 +1,11 @@
 package com.movies.kotlin.marton.tamas.kotlinmovies.api.configuration
 
+import com.squareup.moshi.Json
+
 
 class Configuration {
 
     private lateinit var images: Images
-    @com.squareup.moshi.Json(name = "change_keys")
+    @Json(name = "change_keys")
     private var cangeKeys = arrayListOf<String>()
 }
