@@ -7,6 +7,6 @@ class MoviesApplication : Application() {
 
     companion object {
 
-        const val API_KEY = "0a08e38b874d0aa2d426ffc04357069d"
+        const val API_KEY = "d0aea524bd07ed49cbc26dff63f357dd"
     }
 }
