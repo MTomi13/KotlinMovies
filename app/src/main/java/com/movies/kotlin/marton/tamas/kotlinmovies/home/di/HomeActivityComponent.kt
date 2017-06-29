@@ -1,4 +1,4 @@
-package com.movies.kotlin.marton.tamas.kotlinmovies.dagger.activities
+package com.movies.kotlin.marton.tamas.kotlinmovies.home.di
 
 import com.movies.kotlin.marton.tamas.kotlinmovies.home.HomeActivity
 import dagger.Subcomponent

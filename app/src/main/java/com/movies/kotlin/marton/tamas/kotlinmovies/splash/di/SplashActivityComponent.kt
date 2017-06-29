@@ -1,4 +1,4 @@
-package com.movies.kotlin.marton.tamas.kotlinmovies.dagger.activities
+package com.movies.kotlin.marton.tamas.kotlinmovies.splash.di
 
 import com.movies.kotlin.marton.tamas.kotlinmovies.splash.SplashActivity
 import dagger.Subcomponent

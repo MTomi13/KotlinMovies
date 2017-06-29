@@ -1,8 +1,8 @@
 package com.movies.kotlin.marton.tamas.kotlinmovies.dagger
 
 import android.app.Activity
-import com.movies.kotlin.marton.tamas.kotlinmovies.dagger.activities.HomeActivityComponent
-import com.movies.kotlin.marton.tamas.kotlinmovies.dagger.activities.SplashActivityComponent
+import com.movies.kotlin.marton.tamas.kotlinmovies.home.di.HomeActivityComponent
+import com.movies.kotlin.marton.tamas.kotlinmovies.splash.di.SplashActivityComponent
 import com.movies.kotlin.marton.tamas.kotlinmovies.home.HomeActivity
 import com.movies.kotlin.marton.tamas.kotlinmovies.splash.SplashActivity
 import dagger.Binds
