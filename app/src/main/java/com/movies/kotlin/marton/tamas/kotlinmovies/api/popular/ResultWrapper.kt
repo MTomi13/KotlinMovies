@@ -1,39 +1,39 @@
 package com.movies.kotlin.marton.tamas.kotlinmovies.api.popular
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 
 class ResultWrapper {
 
-    @Json(name = "backdrop_path")
+    @SerializedName("backdrop_path")
     private lateinit var backdropPath: String
-    @Json(name = "first_air_date")
+    @SerializedName("first_air_date")
     private lateinit var firstAirDate: String
-    @Json(name = "genre_ids")
+    @SerializedName("genre_ids")
     private var genreIds = arrayListOf<Int>()
     private var id: Int = 0
-    @Json(name = "original_language")
+    @SerializedName("original_language")
     private lateinit var originalLanguage: String
-    @Json(name = "original_name")
+    @SerializedName("original_name")
     private lateinit var originalName: String
     private lateinit var overview: String
-    @Json(name = "origin_country")
+    @SerializedName("origin_country")
     private var originCountry = arrayListOf<String>()
-    @Json(name = "poster_path")
+    @SerializedName("poster_path")
     private lateinit var posterPath: String
     private var popularity: Double = 0.0
-    @Json(name = "name")
+    @SerializedName("name")
     private lateinit var name: String
-    @Json(name = "vote_average")
+    @SerializedName("vote_average")
     private var voteAverage: Double = 0.0
-    @Json(name = "vote_count")
+    @SerializedName("vote_count")
     private var voteCount: Int = 0
-    @Json(name = "release_date")
+    @SerializedName("release_date")
     private lateinit var releaseDate: String
     private lateinit var title: String
-    @Json(name = "profile_path")
+    @SerializedName("profile_path")
     private lateinit var profilePath: String
-    @Json(name = "original_title")
+    @SerializedName("original_title")
     private lateinit var originalTitle: String
     private lateinit var logoImageUrl: String
     private lateinit var profileImageUrl: String

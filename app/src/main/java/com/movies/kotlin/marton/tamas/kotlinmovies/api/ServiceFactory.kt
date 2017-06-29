@@ -8,7 +8,7 @@ import com.movies.kotlin.marton.tamas.kotlinmovies.api.search.SearchService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class ServiceFactory {
@@ -38,7 +38,7 @@ class ServiceFactory {
         val builder = Retrofit.Builder()
         builder.baseUrl(serviceEndPoint)
         builder.client(okHttpClient)
-        builder.addConverterFactory(MoshiConverterFactory.create())
+        builder.addConverterFactory(GsonConverterFactory.create())
         return builder
     }
 

@@ -6,7 +6,7 @@ import com.movies.kotlin.marton.tamas.kotlinmovies.api.popular.ResultWrapper
 import retrofit2.Response
 
 
-class HomePresenterImpl(val homeInteractorImpl: HomeInteractorImpl) : HomeInteractorImpl.HomeInteractorListener {
+class HomePresenterImpl(val homeInteractorImpl: HomeInteractorImpl, val homeView: HomeView) : HomeInteractorImpl.HomeInteractorListener {
 
     lateinit var contentType: ContentType
 

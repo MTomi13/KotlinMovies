@@ -6,7 +6,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class SplashInteractor(val configurationRequester: ConfigurationRequester) : Callback<Configuration> {
 
     lateinit var splashInteractorListener: SplashInteractorListener
