@@ -1,15 +1,13 @@
 package com.movies.kotlin.marton.tamas.kotlinmovies.dagger
 
 import android.app.Application
-import android.content.Context
 import com.movies.kotlin.marton.tamas.kotlinmovies.api.ServiceFactory
 import com.movies.kotlin.marton.tamas.kotlinmovies.api.configuration.ConfigurationRequester
 import com.movies.kotlin.marton.tamas.kotlinmovies.api.configuration.ConfigurationService
-import com.movies.kotlin.marton.tamas.kotlinmovies.dagger.activities.HomeActivityComponent
-import com.movies.kotlin.marton.tamas.kotlinmovies.dagger.activities.SplashActivityComponent
+import com.movies.kotlin.marton.tamas.kotlinmovies.home.di.HomeActivityComponent
+import com.movies.kotlin.marton.tamas.kotlinmovies.splash.di.SplashActivityComponent
 import dagger.Module
 import dagger.Provides
-import dagger.android.DaggerApplication
 import javax.inject.Singleton
 
 
