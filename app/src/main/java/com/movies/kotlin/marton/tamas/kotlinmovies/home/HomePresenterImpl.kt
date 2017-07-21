@@ -1,12 +1,13 @@
 package com.movies.kotlin.marton.tamas.kotlinmovies.home
 
+import com.movies.kotlin.marton.tamas.kotlinmovies.api.configuration.ConfigurationResponseStore
 import com.movies.kotlin.marton.tamas.kotlinmovies.api.popular.ContentType
 import com.movies.kotlin.marton.tamas.kotlinmovies.api.popular.ResponseContent
 import com.movies.kotlin.marton.tamas.kotlinmovies.api.popular.ResultWrapper
-import retrofit2.Response
 
 
-class HomePresenterImpl(val homeInteractorImpl: HomeInteractorImpl, val homeView: HomeView) : HomeInteractorImpl.HomeInteractorListener {
+class HomePresenterImpl(val homeInteractorImpl: HomeInteractorImpl, val homeView: HomeView, val configurationResponseStore: ConfigurationResponseStore)
+    : HomeInteractorImpl.HomeInteractorListener {
 
     lateinit var contentType: ContentType
 
@@ -24,37 +25,33 @@ class HomePresenterImpl(val homeInteractorImpl: HomeInteractorImpl, val homeView
         homeInteractorImpl.startSearchRequest(contentType, query)
     }
 
-//    private ResponseContent setResultsImageUrl(Response<ResponseContent> response) {
-//        response.body().setContentType(contentType);
-//        List<ResultWrapper> resultWrappers = response.body().getResultWrappers();
-//        String baseUlr = configurationResponseStore.getConfiguration().getImages().getBaseUrl();
-//        for (ResultWrapper resultWrapper : resultWrappers) {
-//            switch (contentType) {
-//                case MOVIES:
-//                case SERIES:
-//                resultWrapper.setLogoImageUrl(baseUlr + configurationResponseStore.getConfiguration().getImages().getLogoSizes().get(3) + resultWrapper.getPosterPath());
-//                resultWrapper.setBackDropImageUrl(baseUlr + configurationResponseStore.getConfiguration().getImages().getBackdropSizes().get(3) + resultWrapper.getBackdropPath());
-//                break;
-//                case PEOPLE:
-//                resultWrapper.setProfileImageUrl(baseUlr + configurationResponseStore.getConfiguration().getImages().getProfileSizes().get(3) + resultWrapper.getProfilePath());
-//                break;
-//            }
-//        }
-//        response.body().setResultWrappers(resultWrappers);
-//        return response.body();
-//    }
+    private fun setResultsImageUrl(response: ResponseContent): ResponseContent {
+        response.contentType = contentType
+        val resultWrappers = response.results
+        val baseUrl = configurationResponseStore.configuration.images.baseUrl
 
-//    private fun setResultsImageUrl(response: Response<ResponseContent>): ResponseContent {
-//        response.body().contentType = contentType
-//        var resultWrappers = listOf<ResultWrapper>()
-//        resultWrappers = response.body().results
-//    }
-
-    override fun onRequestSuccess(responseContent: ResponseContent) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        resultWrappers.forEach {
+            when (contentType) {
+                ContentType.MOVIES,
+                ContentType.SERIES -> setupBackDropAndLogoImageUrl(it, baseUrl)
+                ContentType.PEOPLE -> it.profileImageUrl = baseUrl + configurationResponseStore.configuration.images.profileSizes[3] + it.profilePath
+            }
+        }
+        response.results = resultWrappers
+        return response
     }
 
-    override fun onRequestFailed(throwable: Throwable?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    private fun setupBackDropAndLogoImageUrl(resultWrapper: ResultWrapper, baseUrl: String) {
+        resultWrapper.logoImageUrl = baseUrl + configurationResponseStore.configuration.images.logoSizes[3] + resultWrapper.posterPath
+        resultWrapper.backDropImageUrl = baseUrl + configurationResponseStore.configuration.images.backdropSizes[3] + resultWrapper.backdropPath
+    }
+
+
+    override fun onRequestSuccess(responseContent: ResponseContent) {
+        homeView.displayContent(setResultsImageUrl(responseContent))
+    }
+
+    override fun onRequestFailed(throwable: Throwable) {
+        homeView.displayError(throwable)
     }
 }

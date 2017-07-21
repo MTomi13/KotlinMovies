@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 class Configuration {
 
-    private lateinit var images: Images
+    lateinit var images: Images
     @SerializedName("change_keys")
-    private var cangeKeys = arrayListOf<String>()
+    var cangeKeys = arrayListOf<String>()
 }

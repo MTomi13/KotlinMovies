@@ -7,5 +7,5 @@ interface HomeView {
 
     fun displayContent(responseContent: ResponseContent)
 
-    fun displayError()
+    fun displayError(throwable: Throwable)
 }

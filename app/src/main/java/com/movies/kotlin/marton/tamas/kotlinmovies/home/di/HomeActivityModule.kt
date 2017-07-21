@@ -1,5 +1,6 @@
 package com.movies.kotlin.marton.tamas.kotlinmovies.home.di
 
+import com.movies.kotlin.marton.tamas.kotlinmovies.api.configuration.ConfigurationResponseStore
 import com.movies.kotlin.marton.tamas.kotlinmovies.home.HomeActivity
 import com.movies.kotlin.marton.tamas.kotlinmovies.home.HomeInteractorImpl
 import com.movies.kotlin.marton.tamas.kotlinmovies.home.HomePresenterImpl
@@ -14,7 +15,7 @@ class HomeActivityModule {
     }
 
     @dagger.Provides
-    fun provideHomePresenter(homeView: HomeView, homeInteractorImpl: HomeInteractorImpl): HomePresenterImpl {
-        return com.movies.kotlin.marton.tamas.kotlinmovies.home.HomePresenterImpl(homeInteractorImpl, homeView)
+    fun provideHomePresenter(homeInteractorImpl: HomeInteractorImpl, homeView: HomeView, configurationResponseStore: ConfigurationResponseStore): HomePresenterImpl {
+        return HomePresenterImpl(homeInteractorImpl, homeView, configurationResponseStore)
     }
 }

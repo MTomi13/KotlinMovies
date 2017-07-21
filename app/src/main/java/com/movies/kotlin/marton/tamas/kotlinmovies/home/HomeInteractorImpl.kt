@@ -27,7 +27,7 @@ class HomeInteractorImpl(val popularContentRequester: PopularContentRequester, v
         }
     }
 
-    override fun onFailure(call: Call<ResponseContent>?, throwable: Throwable?) {
+    override fun onFailure(call: Call<ResponseContent>?, throwable: Throwable) {
         homeInteractorListener.onRequestFailed(throwable)
     }
 
@@ -35,6 +35,6 @@ class HomeInteractorImpl(val popularContentRequester: PopularContentRequester, v
 
         fun onRequestSuccess(responseContent: ResponseContent)
 
-        fun onRequestFailed(throwable: Throwable?)
+        fun onRequestFailed(throwable: Throwable)
     }
 }

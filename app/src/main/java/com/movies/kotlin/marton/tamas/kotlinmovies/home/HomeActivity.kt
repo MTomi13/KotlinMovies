@@ -11,20 +11,17 @@ import android.view.Menu
 import android.view.View
 import com.movies.kotlin.marton.tamas.kotlinmovies.R
 import com.movies.kotlin.marton.tamas.kotlinmovies.api.popular.ContentType
+import com.movies.kotlin.marton.tamas.kotlinmovies.api.popular.ResponseContent
+import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
 
-class HomeActivity : AppCompatActivity() {
-
-//    private var textView: TextView? = null
-
-    // if we dont want to intit the variable asap we can do it later
-//    private lateinit var textView: TextView
+class HomeActivity : AppCompatActivity(), HomeView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // with android extensions
 //        textView1.text = "Hello android extension"
 
 //        textView = findViewById(R.id.textView) as TextView
@@ -40,10 +37,12 @@ class HomeActivity : AppCompatActivity() {
 //            text.text = "Hello Kotlin"
 //        }
 
-        setSupportActionBar(toolbar)
+//        setSupportActionBar(toolbar)
 
         val layoutManager = LinearLayoutManager(this)
         recyclerview.layoutManager = layoutManager
+
+        setupBottomBar()
     }
 
     fun setupBottomBar() {
@@ -83,5 +82,13 @@ class HomeActivity : AppCompatActivity() {
     override fun onNewIntent(intent: Intent?) {
         setIntent(intent)
         super.onNewIntent(intent)
+    }
+
+    override fun displayContent(responseContent: ResponseContent) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun displayError(throwable: Throwable) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

@@ -2,11 +2,12 @@ package com.movies.kotlin.marton.tamas.kotlinmovies.splash
 
 import com.movies.kotlin.marton.tamas.kotlinmovies.api.configuration.Configuration
 import com.movies.kotlin.marton.tamas.kotlinmovies.api.configuration.ConfigurationRequester
+import com.movies.kotlin.marton.tamas.kotlinmovies.api.configuration.ConfigurationResponseStore
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SplashInteractor(val configurationRequester: ConfigurationRequester) : Callback<Configuration> {
+class SplashInteractor(val configurationRequester: ConfigurationRequester, val configurationResponseStore: ConfigurationResponseStore) : Callback<Configuration> {
 
     lateinit var splashInteractorListener: SplashInteractorListener
 
@@ -14,7 +15,8 @@ class SplashInteractor(val configurationRequester: ConfigurationRequester) : Cal
         configurationRequester.getConfiguration(this)
     }
 
-    override fun onResponse(call: Call<Configuration>?, response: Response<Configuration>?) {
+    override fun onResponse(call: Call<Configuration>?, response: Response<Configuration>) {
+        configurationResponseStore.configuration = response.body()
         splashInteractorListener.onConfigurationResponseSuccess()
     }
 

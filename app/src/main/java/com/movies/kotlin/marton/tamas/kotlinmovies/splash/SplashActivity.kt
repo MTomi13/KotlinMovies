@@ -35,8 +35,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
 
     private fun startHomeActivity() {
         val intent = Intent(this@SplashActivity, HomeActivity::class.java)
-        Log.e("//", "ssss")
-//        startActivity(intent)
+        startActivity(intent)
     }
 
     override fun handleError(throwable: Throwable) {
