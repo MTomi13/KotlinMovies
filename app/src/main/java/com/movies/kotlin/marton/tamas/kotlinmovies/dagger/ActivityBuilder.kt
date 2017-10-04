@@ -1,26 +1,18 @@
 package com.movies.kotlin.marton.tamas.kotlinmovies.dagger
 
-import android.app.Activity
-import com.movies.kotlin.marton.tamas.kotlinmovies.home.di.HomeActivityComponent
-import com.movies.kotlin.marton.tamas.kotlinmovies.splash.di.SplashActivityComponent
 import com.movies.kotlin.marton.tamas.kotlinmovies.home.HomeActivity
+import com.movies.kotlin.marton.tamas.kotlinmovies.home.di.HomeActivityModule
 import com.movies.kotlin.marton.tamas.kotlinmovies.splash.SplashActivity
-import dagger.Binds
+import com.movies.kotlin.marton.tamas.kotlinmovies.splash.di.SplashActivityModule
 import dagger.Module
-import dagger.android.ActivityKey
-import dagger.android.AndroidInjector
-import dagger.multibindings.IntoMap
+import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class ActivityBuilder {
 
-    @Binds
-    @IntoMap
-    @ActivityKey(SplashActivity::class)
-    abstract fun bindSplashActivity(builder: SplashActivityComponent.Builder): AndroidInjector.Factory <out Activity>
+    @ContributesAndroidInjector(modules = arrayOf(SplashActivityModule::class))
+    abstract fun bindSplashActivity(): SplashActivity
 
-    @Binds
-    @IntoMap
-    @ActivityKey(HomeActivity::class)
-    abstract fun bindHomeActivity(builder: HomeActivityComponent.Builder): AndroidInjector.Factory <out Activity>
+    @ContributesAndroidInjector(modules = arrayOf(HomeActivityModule::class))
+    abstract fun bindHomeActivity(): HomeActivity
 }

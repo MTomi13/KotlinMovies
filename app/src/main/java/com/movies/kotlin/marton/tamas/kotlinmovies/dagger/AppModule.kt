@@ -5,14 +5,12 @@ import com.movies.kotlin.marton.tamas.kotlinmovies.api.ServiceFactory
 import com.movies.kotlin.marton.tamas.kotlinmovies.api.configuration.ConfigurationRequester
 import com.movies.kotlin.marton.tamas.kotlinmovies.api.configuration.ConfigurationResponseStore
 import com.movies.kotlin.marton.tamas.kotlinmovies.api.configuration.ConfigurationService
-import com.movies.kotlin.marton.tamas.kotlinmovies.home.di.HomeActivityComponent
-import com.movies.kotlin.marton.tamas.kotlinmovies.splash.di.SplashActivityComponent
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 
-@Module(subcomponents = arrayOf(SplashActivityComponent::class, HomeActivityComponent::class))
+@Module
 class AppModule(val application: Application) {
 
     @Provides
